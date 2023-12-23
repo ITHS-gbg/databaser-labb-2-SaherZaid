@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataAccess.Entities;
+namespace Database.Entities;
 
 public partial class InventoryBalance
 {
@@ -11,7 +11,7 @@ public partial class InventoryBalance
 
     public int NoOfProducts { get; set; }
 
-    public virtual Book Isbn13Navigation { get; set; } //= null!;
+    public virtual Book Isbn13Navigation { get; set; } = null!;
 
-    public virtual Store Store { get; set; } //= null!;
+    public virtual Store Store { get; set; } = null!;
 }

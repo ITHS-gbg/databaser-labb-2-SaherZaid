@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataAccess.Entities;
+namespace Database.Entities;
 
 public partial class Order
 {

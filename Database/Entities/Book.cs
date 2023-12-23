@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataAccess.Entities;
+namespace Database.Entities;
 
 public partial class Book
 {
@@ -23,4 +23,5 @@ public partial class Book
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
     public List<Store> Stores { get; set; } = new();
+
 }

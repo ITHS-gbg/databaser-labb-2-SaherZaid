@@ -1,7 +1,8 @@
-﻿using DataAccess.Entities;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess;
+namespace Database.Entities;
 
 public partial class BookStoresContext : DbContext
 {
