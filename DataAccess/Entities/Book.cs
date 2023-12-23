@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 namespace DataAccess.Entities;
 
 public partial class Book
@@ -14,7 +15,7 @@ public partial class Book
 
     public string Isbn13 { get; set; } = null!;
 
-    public int AuthorNo { get; set; }
+    public int? AuthorNo { get; set; }
 
     public virtual Author? AuthorNoNavigation { get; set; }
 
@@ -22,5 +23,4 @@ public partial class Book
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
     public List<Store> Stores { get; set; } = new();
-
 }

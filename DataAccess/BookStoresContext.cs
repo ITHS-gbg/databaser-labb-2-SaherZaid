@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.Entities;
+namespace DataAccess;
 
 public partial class BookStoresContext : DbContext
 {
@@ -38,20 +37,6 @@ public partial class BookStoresContext : DbContext
     public virtual DbSet<Store> Stores { get; set; }
 
     public virtual DbSet<TitlesPerAuthor> TitlesPerAuthors { get; set; }
-
-    
-    //public static List<Book> GetBooksInStore(int storeId)
-    //{
-    //    using (var context = new BookStoresContext())
-    //    {
-    //        var booksInStore = from inventory in context.InventoryBalances
-    //            join book in context.Books on inventory.Isbn13 equals book.Isbn13
-    //            where inventory.StoreId == storeId
-    //            select book;
-
-    //        return booksInStore.ToList();
-    //    }
-    //}
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -243,7 +228,7 @@ public partial class BookStoresContext : DbContext
                 .HasColumnName("ISBN13");
             entity.Property(e => e.NoOfProducts).HasColumnName("No_Of_Products");
 
-            entity.HasOne(d => d.Book).WithMany(p => p.InventoryBalances)
+            entity.HasOne(d => d.Isbn13Navigation).WithMany(p => p.InventoryBalances)
                 .HasForeignKey(d => d.Isbn13)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Inventory__ISBN1__3F466844");

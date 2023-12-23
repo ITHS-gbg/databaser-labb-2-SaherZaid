@@ -127,6 +127,30 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "BookStore",
+                columns: table => new
+                {
+                    BooksIsbn13 = table.Column<string>(type: "varchar(13)", nullable: false),
+                    StoresStoreID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BookStore", x => new { x.BooksIsbn13, x.StoresStoreID });
+                    table.ForeignKey(
+                        name: "FK_BookStore_Books_BooksIsbn13",
+                        column: x => x.BooksIsbn13,
+                        principalTable: "Books",
+                        principalColumn: "ISBN13",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BookStore_Stores_StoresStoreID",
+                        column: x => x.StoresStoreID,
+                        principalTable: "Stores",
+                        principalColumn: "Store_iD",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "InventoryBalance",
                 columns: table => new
                 {
@@ -218,6 +242,11 @@ namespace DataAccess.Migrations
                 column: "Author_no");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BookStore_StoresStoreID",
+                table: "BookStore",
+                column: "StoresStoreID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Employees_Store_id",
                 table: "Employees",
                 column: "Store_id");
@@ -253,6 +282,9 @@ namespace DataAccess.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AuthorBooks");
+
+            migrationBuilder.DropTable(
+                name: "BookStore");
 
             migrationBuilder.DropTable(
                 name: "InventoryBalance");

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
 namespace DataAccess.Entities;
 
-public partial class Store 
+public partial class Store
 {
     public int StoreID { get; set; }
+
     public string StoreName { get; set; } = null!;
 
     public string Address { get; set; } = null!;
@@ -23,5 +23,4 @@ public partial class Store
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
     public List<Book> Books { get; set; } = new();
-
 }
